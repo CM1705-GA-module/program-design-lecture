@@ -1,0 +1,92 @@
+import random
+import math
+# variables
+size_X = 10
+size_Y = 10
+found = False
+        
+# player starts in middle of grid
+print("Player starts at (5, 5)")
+player_X = 5
+player_Y = 5
+
+# determine position of prize
+# prize_X = 1;
+# prize_Y = 7;
+prize_X = random.randint(1, size_X )
+prize_Y = random.randint(1, size_Y )
+        
+# Output prize location while debugging
+print("Prize is at (" + str(prize_X) + ", " + str(prize_Y) + ")")
+
+# loop to ask the user for a direction
+while  not found:
+    # get input from user
+    input_char = input("Input a direction using a,s,d,w \n").lower()
+
+
+    # change the player position
+    # switch on the input character
+    if input_char == 'w':
+        # if a move upwards is in bounds, move up
+        # else output that the move is not possible.
+        if (player_Y < 10):
+            player_Y +=1
+        else :
+            print("You can not move UP!!");
+
+                    
+    elif input_char == 's':
+        # if a move down is in bounds, move down
+        # else output that the move is not possible.
+        if (player_Y > 1):
+            player_Y -= 1
+        else :
+            print("You can not move DOWN!!")
+
+
+    elif input_char == 'a':
+        # if a move left is in bounds, move left
+        # else output that the move is not possible.
+        if (player_X > 1):
+            player_X -= 1
+        else :
+            print("You can not move LEFT!!")
+
+                    
+    elif input_char == 'd':
+        # if a move right is in bounds, move right
+        # else output that the move is not possible.
+        if (player_X < 10):
+            player_X += 1
+        else :
+            print("You can not move RIGHT!!")
+
+                    
+    else: print("Not a valid direction")
+ 
+
+    # give feedback to the player
+    print("New position is (" + str(player_X) + ", " + str(player_Y) + ")")
+            
+    distance_to_prize = max(abs(prize_X-player_X), abs(prize_Y-player_Y))
+
+    if (distance_to_prize == 0):
+        # register that the prize has been found 
+        # and out a message to that effect		
+        found = True;
+        print("Hurrah! Game over")
+            
+    elif (distance_to_prize == 1):
+        print("Boiling")
+                
+    elif (distance_to_prize == 2):
+        print("Hot")
+                
+    elif (distance_to_prize == 3):
+        print("Warm")
+        
+    else :
+        print("Cold")
+
+
